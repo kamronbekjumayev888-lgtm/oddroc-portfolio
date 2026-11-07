@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OddRoc // Jumayev Kamronbek</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b0f19;
+      color: #e2e8f0;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .door-perspective {
+      perspective: 1200px;
+    }
+    .door-leaf {
+      transform-origin: left center;
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      transform-style: preserve-3d;
+    }
+    .door-container:hover .door-leaf {
+      transform: rotateY(-34deg);
+      box-shadow: 18px 10px 30px rgba(0, 0, 0, 0.7);
+    }
+    .spiral-ring {
+      width: 8px;
+      height: 18px;
+      border: 2px solid #94a3b8;
+      border-radius: 9999px;
+      background: #1e293b;
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-slate-700 selection:text-white flex flex-col justify-between">
+
+  <!-- TOP NAVIGATION -->
+  <header class="w-full max-w-6xl mx-auto px-6 py-8 flex items-center justify-between border-b border-slate-800/80">
+    <div class="flex items-center gap-3">
+      <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+      <span class="font-mono text-sm tracking-wider font-semibold text-white">ODDROC<span class="text-slate-500">.CORE</span></span>
+    </div>
+    <div class="flex items-center gap-6 text-xs font-mono text-slate-400">
+      <span class="hidden sm:inline">STATUS: ONLINE</span>
+      <a href="mailto:oddroc01@gmail.com" class="px-3.5 py-1.5 rounded-full border border-slate-700 text-slate-200 hover:border-slate-500 hover:text-white transition">CONTACT</a>
+    </div>
+  </header>
+
+  <main class="w-full max-w-6xl mx-auto px-6 py-12 flex-grow flex flex-col justify-center">
+    <!-- PAGE 1: EDITORIAL HERO SECTION -->
+    <section class="flex flex-col items-center text-center my-8 md:my-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800 bg-slate-900/60 text-slate-400 text-xs font-mono mb-6">
+        <span>SECURITY DOSSIER</span>
+        <span class="text-slate-600">//</span>
+        <span class="text-emerald-400 font-semibold">ODDROC</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4">
+        Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">Kamronbek</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-400 font-light mb-8">
+        Known online as <span class="text-white font-mono font-medium">OddRoc</span>. I am an
+      </p>
+
+      <!-- Spiral Flip Badge -->
+      <div class="relative bg-white text-slate-950 px-6 sm:px-10 py-5 sm:py-6 rounded-2xl shadow-2xl border border-slate-200 flex items-center justify-center mb-10 max-w-md w-full">
+        <div class="absolute -top-3.5 left-0 right-0 flex justify-evenly px-4">
+          <div class="spiral-ring"></div>
+          <div class="spiral-ring"></div>
+          <div class="spiral-ring"></div>
+          <div class="spiral-ring"></div>
+          <div class="spiral-ring"></div>
+          <div class="spiral-ring"></div>
+          <div class="spiral-ring"></div>
+          <div class="spiral-ring"></div>
+        </div>
+        <span class="text-xl sm:text-2xl font-bold tracking-tight text-center">
+          SOC Analyst & Cyber Defender
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="scrollToDoors()" class="px-6 py-3 rounded-xl bg-white text-slate-950 font-semibold text-sm hover:bg-slate-200 transition shadow-lg">
+          Explore Archives
+        </button>
+        <a href="https://t.me/urckix" target="_blank" class="px-6 py-3 rounded-xl border border-slate-800 text-slate-300 font-semibold text-sm hover:border-slate-600 hover:text-white transition">
+          Telegram
+        </a>
+      </div>
+    </section>
+
+    <!-- PAGE 2: THE 4 ARCHITECTURAL DOORS -->
+    <section id="doorsSection" class="pt-16 pb-20 border-t border-slate-800/80">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">OPERATIONAL ARCHIVES</h2>
+        <p class="text-sm font-mono text-slate-400 mt-2">Select an enclave door to examine records</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- DOOR 1: ABOUT ME -->
+        <div onclick="openModal('aboutModal')" class="door-container door-perspective group cursor-pointer flex flex-col items-center">
+          <div class="door-leaf relative w-full h-80 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 shadow-xl p-5 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-xs text-slate-500 font-semibold">GATE 01</span>
+              <div class="w-3 h-3 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center">
+                <div class="w-1 h-1 rounded-full bg-slate-500"></div>
+              </div>
+            </div>
+            <div class="text-center py-6">
+              <h3 class="text-lg font-bold text-white tracking-wide">ABOUT ME</h3>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-slate-800/60 font-mono text-xs text-slate-400">
+              <span>UNLOCKED</span>
+              <span class="group-hover:translate-x-1 transition text-white">&rarr;</span>
+            </div>
+          </div>
+          <span class="font-mono text-xs text-slate-500 mt-3 group-hover:text-slate-300 transition">IDENTITY DOSSIER</span>
+        </div>
+
+        <!-- DOOR 2: ACHIEVEMENTS -->
+        <div onclick="openModal('achieveModal')" class="door-container door-perspective group cursor-pointer flex flex-col items-center">
+          <div class="door-leaf relative w-full h-80 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 shadow-xl p-5 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-xs text-slate-500 font-semibold">GATE 02</span>
+              <div class="w-3 h-3 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center">
+                <div class="w-1 h-1 rounded-full bg-slate-500"></div>
+              </div>
+            </div>
+            <div class="text-center py-6">
+              <h3 class="text-lg font-bold text-white tracking-wide">ACHIEVEMENTS</h3>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-slate-800/60 font-mono text-xs text-slate-400">
+              <span>UNLOCKED</span>
+              <span class="group-hover:translate-x-1 transition text-white">&rarr;</span>
+            </div>
+          </div>
+          <span class="font-mono text-xs text-slate-500 mt-3 group-hover:text-slate-300 transition">CREDENTIALS & NETWORK</span>
+        </div>
+
+        <!-- DOOR 3: WRITEUPS -->
+        <div onclick="openModal('writeupsModal')" class="door-container door-perspective group cursor-pointer flex flex-col items-center">
+          <div class="door-leaf relative w-full h-80 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 shadow-xl p-5 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-xs text-slate-500 font-semibold">GATE 03</span>
+              <div class="w-3 h-3 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center">
+                <div class="w-1 h-1 rounded-full bg-slate-500"></div>
+              </div>
+            </div>
+            <div class="text-center py-6">
+              <h3 class="text-lg font-bold text-white tracking-wide">WRITEUPS</h3>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-slate-800/60 font-mono text-xs text-slate-400">
+              <span>STANDBY</span>
+              <span class="group-hover:translate-x-1 transition text-white">&rarr;</span>
+            </div>
+          </div>
+          <span class="font-mono text-xs text-slate-500 mt-3 group-hover:text-slate-300 transition">SECURITY PAPERS</span>
+        </div>
+
+        <!-- DOOR 4: CTF ATTENDANCE -->
+        <div onclick="openModal('ctfModal')" class="door-container door-perspective group cursor-pointer flex flex-col items-center">
+          <div class="door-leaf relative w-full h-80 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 shadow-xl p-5 flex flex-col justify-between">
+            <div class="flex justify-between items-center">
+              <span class="font-mono text-xs text-slate-500 font-semibold">GATE 04</span>
+              <div class="w-3 h-3 rounded-full border border-slate-700 bg-slate-800 flex items-center justify-center">
+                <div class="w-1 h-1 rounded-full bg-slate-500"></div>
+              </div>
+            </div>
+            <div class="text-center py-6">
+              <h3 class="text-lg font-bold text-white tracking-wide">CTF ATTENDANCE</h3>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-slate-800/60 font-mono text-xs text-slate-400">
+              <span>STANDBY</span>
+              <span class="group-hover:translate-x-1 transition text-white">&rarr;</span>
+            </div>
+          </div>
+          <span class="font-mono text-xs text-slate-500 mt-3 group-hover:text-slate-300 transition">CHALLENGE ARCHIVES</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL: DOOR 1 (ABOUT ME) -->
+  <div id="aboutModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div class="flex justify-between items-start border-b border-slate-800 pb-4 mb-6">
+        <div>
+          <span class="font-mono text-xs text-slate-500 font-semibold">GATE 01 // OPERATOR PROFILE</span>
+          <h2 class="text-2xl font-bold text-white mt-1">Jumayev Kamronbek <span class="font-mono text-sm text-slate-400 font-normal">(OddRoc)</span></h2>
+          <p class="text-sm text-slate-400 mt-0.5">Aspiring SOC Analyst & Network Security Specialist</p>
+        </div>
+        <button onclick="closeModal('aboutModal')" class="text-slate-400 hover:text-white font-mono text-xs p-2">&times; CLOSE</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 font-mono text-xs mb-6 text-slate-300">
+        <div><span class="text-slate-500">EMAIL:</span> <a href="mailto:oddroc01@gmail.com" class="text-white hover:underline">oddroc01@gmail.com</a></div>
+        <div><span class="text-slate-500">PHONE:</span> <span class="text-white">+998 90 511 21 77</span></div>
+        <div><span class="text-slate-500">TELEGRAM:</span> <a href="https://t.me/urckix" target="_blank" class="text-white hover:underline">@urckix</a></div>
+        <div><span class="text-slate-500">ORIGIN:</span> <span class="text-white">Bukhara, Uzbekistan</span></div>
+      </div>
+
+      <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+        <p>
+          Born in Bukhara, Uzbekistan, I developed a strong foundation in disciplined self-study early on, achieving an IELTS 7.0 score at age 17. Immersing myself in English-language technical media sparked my curiosity for core computer systems—specifically network protocols, the OSI reference model, and infrastructure security fundamentals.
+        </p>
+        <p>
+          Leveraging this momentum, I dedicated myself to an intensive, self-directed curriculum in computer networking, mastering routing, switching, and protocol behavior within three months. As my architectural understanding deepened, my focus naturally shifted toward defensive cybersecurity: dissecting system logs, understanding cryptographic principles, and analyzing threat behaviors.
+        </p>
+        <p>
+          Today, I am channeling this technical progression directly into the Security Operations Center (SOC) analyst path, combining hands-on network visibility with incident triage, log monitoring, and defensive analysis.
+        </p>
+      </div>
+      <div class="mt-8 pt-4 border-t border-slate-800 flex justify-end">
+        <button onclick="closeModal('aboutModal')" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-mono transition">RETURN TO PORTAL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DOOR 2 (ACHIEVEMENTS) -->
+  <div id="achieveModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto shadow-2xl">
+      <div class="flex justify-between items-start border-b border-slate-800 pb-4 mb-6">
+        <div>
+          <span class="font-mono text-xs text-slate-500 font-semibold">GATE 02 // VERIFIED MILESTONES</span>
+          <h2 class="text-2xl font-bold text-white mt-1">Credentials & Network Engineering</h2>
+        </div>
+        <button onclick="closeModal('achieveModal')" class="text-slate-400 hover:text-white font-mono text-xs p-2">&times; CLOSE</button>
+      </div>
+
+      <h3 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">Official Certifications</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="p-5 rounded-xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-mono text-emerald-400 font-semibold">TRYHACKME</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-emerald-300">COMPLETED</span>
+            </div>
+            <h4 class="text-base font-bold text-white mb-1">Pre Security Learning Path</h4>
+            <p class="text-xs text-slate-400">Issued to Jumayev Kamronbek. Executive sign-off by Ben Spring, CEO.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/60 font-mono text-[11px] text-slate-500 flex justify-between">
+            <span>Duration: 19h 10m</span>
+            <span>02 Nov 2026</span>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-xl bg-slate-950/70 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-mono text-emerald-400 font-semibold">TRYHACKME CERTIFIED</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-emerald-300">VERIFIED</span>
+            </div>
+            <h4 class="text-base font-bold text-white mb-1">SEC0: Pre Security Certification</h4>
+            <p class="text-xs text-slate-400">Rigorous assessment covering fundamental attack vectors, defense, and core networking.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/60 font-mono text-[11px] text-slate-500">
+            ID: THM-6ae8174ad04fdf8510efd
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">Network Engineering Knowledge Base</h3>
+      <div class="space-y-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-950/50 border border-slate-800/80">
+          <h4 class="font-bold text-white text-sm mb-1">Routing Architectures</h4>
+          <p class="text-slate-300 leading-relaxed">
+            Hands-on configuration of Static Routing, Dynamic Routing protocols (RIP v1/v2, OSPF Link-State mechanics, IS-IS intermediate system routing, and EIGRP composite metric metrics).
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/50 border border-slate-800/80">
+          <h4 class="font-bold text-white text-sm mb-1">Internet Mechanics & The 7-Layer OSI Model</h4>
+          <p class="text-slate-300 leading-relaxed">
+            Deep encapsulation & decapsulation analysis from Application (L7) down to Physical (L1). Protocol mechanics of DNS hierarchical lookups, DHCP lease states, ARP caching, and TCP 3-way handshakes vs UDP transport.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/50 border border-slate-800/80">
+          <h4 class="font-bold text-white text-sm mb-1">Physical Layer & Cabling Standards</h4>
+          <p class="text-slate-300 leading-relaxed">
+            Fabrication and pinout schematics for T568A and T568B color codes. Assembly of straight-through cables (switch-to-host) and crossover cables (MDI/MDIX direct device connection), attenuation mitigation, and RJ-45 crimping.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-950/50 border border-slate-800/80">
+          <h4 class="font-bold text-white text-sm mb-1">Port Architecture & Defensive Inspection</h4>
+          <p class="text-slate-300 leading-relaxed">
+            Transport socket mapping across standard well-known service ports (21, 22, 23, 25, 53, 80, 443, 3389). Port vulnerability inspection, traffic baseline isolation, and firewall filtering logic.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-4 border-t border-slate-800 flex justify-end">
+        <button onclick="closeModal('achieveModal')" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-mono transition">RETURN TO PORTAL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DOOR 3 (WRITEUPS) -->
+  <div id="writeupsModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-full border border-slate-700 bg-slate-950 flex items-center justify-center mx-auto mb-4 text-slate-400 font-mono text-sm">
+        03
+      </div>
+      <h3 class="text-xl font-bold text-white mb-2">Writeups & Research</h3>
+      <p class="text-xs font-mono text-slate-400 mb-6">STANDBY // NO PUBLIC ENTRIES POSTED</p>
+      <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-400 leading-relaxed text-left">
+        Upcoming technical writeups, lab breakdowns, and network defense documentation will be indexed here as they are published.
+      </div>
+      <button onclick="closeModal('writeupsModal')" class="mt-6 w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-mono transition">RETURN TO PORTAL</button>
+    </div>
+  </div>
+
+  <!-- MODAL: DOOR 4 (CTF ATTENDANCE) -->
+  <div id="ctfModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-full border border-slate-700 bg-slate-950 flex items-center justify-center mx-auto mb-4 text-slate-400 font-mono text-sm">
+        04
+      </div>
+      <h3 class="text-xl font-bold text-white mb-2">CTF Attendance</h3>
+      <p class="text-xs font-mono text-slate-400 mb-6">STANDBY // NO TOURNAMENT RECORDS POSTED</p>
+      <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-400 leading-relaxed text-left">
+        Upcoming tournament rankings, wargame solves, and platform challenge milestones will be listed here.
+      </div>
+      <button onclick="closeModal('ctfModal')" class="mt-6 w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-mono transition">RETURN TO PORTAL</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="w-full max-w-6xl mx-auto px-6 py-8 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 font-mono gap-4">
+    <div>&copy; 2026 ODDROC // JUMAYEV KAMRONBEK</div>
+    <div>BLUE TEAM DEFENSE // SECURITY OPERATIONS</div>
+  </footer>
+
+  <script>
+    function scrollToDoors() {
+      document.getElementById('doorsSection').scrollIntoView({ behavior: 'smooth' });
+    }
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        ['aboutModal', 'achieveModal', 'writeupsModal', 'ctfModal'].forEach(id => closeModal(id));
+      }
+    });
+  </script>
+</body>
+</html>
